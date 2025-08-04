@@ -15,7 +15,7 @@ INTERNAL_API_KEY = "d3ac456931faffea79a7c00f08a3e190998e84d9925709bb117e75007814
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-2.5-flash", generation_config={"temperature": 0})
+model = genai.GenerativeModel("gemini-2.0-flash")
 
 class RequestBody(BaseModel):
     documents: HttpUrl
