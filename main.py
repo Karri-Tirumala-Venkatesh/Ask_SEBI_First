@@ -15,7 +15,7 @@ INTERNAL_API_KEY = "d3ac456931faffea79a7c00f08a3e190998e84d9925709bb117e75007814
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-2.0-flash", generation_config={"temperature": 0})
 
 class RequestBody(BaseModel):
     documents: HttpUrl
@@ -32,7 +32,7 @@ def verify_token(creds: HTTPAuthorizationCredentials = Depends(auth_scheme)):
 @app.post("/hackrx/run", response_model=ResponseBody)
 async def hackrx_run(body: RequestBody, authorized: bool = Depends(verify_token)):
     prompt = f"""You are given a document at this URL: {body.documents}
-Answer the following questions in one line each, in the exact JSON format:
+Answer the following questions in one sentence each, in the exact JSON format:
 {{
 "answers": [
 "answer1",
