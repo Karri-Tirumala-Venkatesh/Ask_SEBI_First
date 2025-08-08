@@ -31,8 +31,8 @@ def verify_token(creds: HTTPAuthorizationCredentials = Depends(auth_scheme)):
 
 @app.post("/hackrx/run", response_model=ResponseBody)
 async def hackrx_run(body: RequestBody, authorized: bool = Depends(verify_token)):
-    prompt = f"""You are given a document at this URL: {body.documents}
-Answer the following questions in detail, in the exact JSON format:
+    prompt = f"""You are given a reference at this URL: {body.documents}
+Answer the following questions in detail from the reference, in the exact JSON format:
 {{
 "answers": [
 "answer1",
