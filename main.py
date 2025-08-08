@@ -4,6 +4,9 @@ from pydantic import BaseModel, HttpUrl
 from typing import List
 import os
 import google.generativeai as genai
+import re
+import json
+import asyncio
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -29,27 +32,22 @@ def verify_token(creds: HTTPAuthorizationCredentials = Depends(auth_scheme)):
         raise HTTPException(status_code=401, detail="Invalid or missing token")
     return True
 
+# Compile regex pattern once
+JSON_PATTERN = re.compile(r'\{[\s\S]*\}')
+
 @app.post("/hackrx/run", response_model=ResponseBody)
 async def hackrx_run(body: RequestBody, authorized: bool = Depends(verify_token)):
-    prompt = f"""You are given a reference at this URL: {body.documents}
-Answer the following questions in detail from the reference, in the exact JSON format:
-{{
-"answers": [
-"answer1",
-"answer2"
-]
-}}
+    prompt = f"""Reference: {body.documents}
+Answer the following questions in one detailed sentence each, in the exact JSON format:
+{{"answers": ["answer1", "answer2"]}}
 Questions:
-{chr(10).join([f"{i+1}. {q}" for i, q in enumerate(body.questions)])}
-Return only the JSON object as your response.
-"""
+""" + "\n".join(f"{i+1}. {q}" for i, q in enumerate(body.questions)) + "\nReturn only the JSON object."
     try:
-        response = model.generate_content(prompt)
-        import json, re
-        match = re.search(r'\{[\s\S]*\}', response.text)
+        response = await asyncio.to_thread(model.generate_content, prompt)
+        match = JSON_PATTERN.search(response.text)
         if not match:
             raise ValueError("No JSON object found in Gemini response")
         answers_json = json.loads(match.group())
-        return answers_json
+        return ResponseBody(**answers_json)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Gemini error: {e}")
