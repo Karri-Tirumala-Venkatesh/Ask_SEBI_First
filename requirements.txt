@@ -1,5 +1,16 @@
 fastapi
 uvicorn
+pydantic
 python-dotenv
 google-generativeai
-pydantic
+sentence-transformers
+langchain
+langchain-community
+langchain-huggingface
+unstructured
+unstructured[pdf]
+faiss-cpu
+python-magic
+python-magic-bin
+requests
+httpx
