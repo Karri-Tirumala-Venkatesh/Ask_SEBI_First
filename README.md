@@ -1,7 +1,7 @@
 # FINTERNET – AI-Powered Financial Insights API
 
 ## About the Project
-FINTERNET is a FastAPI-based service leveraging Google's Gemini API to deliver advanced financial insights via REST endpoints. Built for quick prototyping and hackathons, the project runs locally and can be publicly exposed via LocalTunnel for live demonstrations or testing. All instructions and commands are tailored for Windows environments.
+Application Programming Interface (API), which can make use of large system modules, to process Natural Language queries, to recursively retrieve relavant information from large unstructured data.
 
 ## Quick Start (Windows)
 1. **Clone the repository**  
@@ -48,34 +48,3 @@ Cloud platforms are not used due to large dependencies. To test remotely:
    Use this to share your API with others for testing, for example:  
    `https://your-subdomain.loca.lt/docs`
 
-## API Endpoints
-
-### Health Check
-```
-GET /
-Response: Basic status or welcome message
-```
-
-### Example: Financial Analysis
-```
-POST /analyze
-Headers: Content-Type: application/json
-Body:
-{
-  "query": "Analyze the recent performance of XYZ and summarize key risks."
-}
-Response:
-{
-  "result": "<Gemini-powered financial insights>"
-}
-```
-
-## Troubleshooting
-- **401/403 errors:** Check your `.env` and make sure the API key variable name matches the one expected in `main.py`.
-- **Module not found:** Make sure the virtual environment is activated and all requirements installed.
-- **Port in use:** Change the port in both `uvicorn` and `lt` commands if 8000 is occupied (e.g., use 8080).
-- **LocalTunnel issues:** Rerun `lt --port 8000`. Try a different port or restart if issues persist.
-- **Windows vs. macOS/Linux:** For macOS/Linux, activate your venv with `source myenv/bin/activate`.
-
-## No License
-This project is being submitted for a hackathon and does not include a license.
