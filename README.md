@@ -1,7 +1,5 @@
 # 🌐 FINTERNET
 
-> 🚀 *Intelligent API for Natural Language Processing of Unstructured Financial Data*
-
 ## 📋 About the Project
 
 Application Programming Interface (API), which can make use of large system modules, to process Natural Language queries, to recursively retrieve relevant information from large unstructured data.
