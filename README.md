@@ -1,4 +1,4 @@
-# 🌐 FINTERNET
+# 🌐 Ask_SEBI
 
 ## 📋 About the Project
 
@@ -8,7 +8,7 @@ Application Programming Interface (API), which can make use of large system modu
 
 ### 1. 📥 **Clone the repository**
    ```shell
-   git clone https://github.com/Karri-Tirumala-Venkatesh/FINTERNET.git
+   git clone https://github.com/Karri-Tirumala-Venkatesh/Ask_SEBI.git
    cd FINTERNET
    ```
 
