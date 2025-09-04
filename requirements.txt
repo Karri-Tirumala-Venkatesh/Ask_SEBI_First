@@ -14,3 +14,4 @@ python-magic
 python-magic-bin
 requests
 httpx
+pdfminer.six
