@@ -174,8 +174,8 @@ async def process_question_recursive(question, vectorstore, client, recursion_de
 # =========================
 # Main Endpoint
 # =========================
-@app.post("/hackrx/run")
-async def hackrx_run(body: RequestBody, authorized: bool = Depends(verify_token)):
+@app.post("/ask_sebi/run")
+async def ask_sebi_run(body: RequestBody, authorized: bool = Depends(verify_token)):
     """
     Answers user questions based on the content of a web document or file.
     Recursively follows LLM instructions to fetch referenced content if needed.
