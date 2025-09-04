@@ -8,7 +8,7 @@ Application Programming Interface (API), which can make use of large system modu
 
 ### 1. 📥 **Clone the repository**
    ```shell
-   git clone https://github.com/Karri-Tirumala-Venkatesh/Ask_SEBI.git
+   git clone https://github.com/Karri-Tirumala-Venkatesh/Ask_SEBI_First.git
    cd FINTERNET
    ```
 
