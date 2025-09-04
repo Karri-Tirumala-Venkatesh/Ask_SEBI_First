@@ -1,4 +1,4 @@
-# 🌐 Ask_SEBI
+# 🌐 Ask_SEBI_First
 
 ## 📋 About the Project
 
